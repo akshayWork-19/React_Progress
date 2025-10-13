@@ -1,36 +1,36 @@
 import conf from '../conf/config.js';
-import { Client, ID, Databases, Storage, Query } from 'appwrite';
+import { Client, ID, Databases, Storage, Query, TablesDB } from 'appwrite';
 
 export class Service {
   client = new Client();
-  Databases;
+  databases;
   bucket;
   constructor() {
     this.client
       .setEndpoint(conf.appwrite_url)
       .setProject(conf.appwrite_project_id);
-    this.databases = new Databases(this.client);
+    this.databases = new TablesDB(this.client);
     this.bucket = new Storage(this.client)
   }
 
   async createPost({ title, slug, content, featuredImage, status, userId }) {
     try {
-      return await this.databases.createDocument({
+      console.log("inside this")
+      return await this.databases.createRow({
         databaseId: conf.appwrite_database_id,
         tableId: conf.appwrite_table_id,
         rowId: slug,
-        data: { "title": title, "content": content, "featuredImage": featuredImage, "status": status },
+        data: { "title": title, "content": content, "featuredImage": featuredImage, "status": status, "userId": userId },
       })
     } catch (error) {
       console.error("Appwrite Service error :: createPost :: error", error.message);
       return false;
-
     }
   }
 
   async updatePost(slug, { updatedTitle, updatedContent, updatedfeaturedImage, updatedStatus }) {
     try {
-      return await tables.updateRow({
+      return await this.databases.updateRow({
         databaseId: conf.appwrite_database_id,
         tableId: conf.appwrite_table_id,
         rowId: slug,
@@ -45,7 +45,7 @@ export class Service {
 
   async deletePost(slug) {
     try {
-      await this.tables.deleteRow({
+      await this.databases.deleteRow({
         databaseId: conf.appwrite_database_id,
         tableId: conf.appwrite_table_id,
         rowId: slug
@@ -59,7 +59,7 @@ export class Service {
 
   async getPost(slug) {
     try {
-      return await this.tables.getRow({
+      return await this.databases.getRow({
         databaseId: conf.appwrite_database_id,
         tableId: conf.appwrite_table_id,
         rowId: slug
@@ -73,7 +73,7 @@ export class Service {
 
   async getPosts(queries = [Query.equal("status", "active")]) {
     try {
-      return await this.tables.getRow({
+      return await this.databases.listRows({
         databaseId: conf.appwrite_database_id,
         tableId: conf.appwrite_table_id,
         queries: queries,
