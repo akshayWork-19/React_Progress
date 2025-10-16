@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import appwriteService from "../appwrite/config";
 import { Container, PostCard } from "../components";
-
+import { useSelector } from 'react-redux';
 
 function Home() {
   const [posts, setPosts] = useState([]);
+  const userState = useSelector((state) => state.auth.status);
 
   useEffect(() => {
     appwriteService.listDocuments()
@@ -16,7 +17,7 @@ function Home() {
       .catch((error) => console.log("Appwrite Error :: Home-getPosts :: error", error.message))
   })
 
-  if (posts.length === 0) {
+  if (posts.length === 0 && !userState) {
     return (
       // CSS for seamless empty state: Deep dark background, centered, subtle elevation
       <div className="w-full py-24 min-h-screen bg-gray-900 text-white flex justify-center items-center">
@@ -24,8 +25,8 @@ function Home() {
           <div className="flex flex-wrap">
             <div className="p-2 w-full">
               {/* Blended container, using border for subtle definition instead of shadow */}
-              <div className="bg-gray-900 p-16 rounded-xl border border-gray-700 text-center transition duration-300 hover:border-indigo-500">
-                <h1 className="text-4xl font-extrabold text-yellow-500 tracking-wider">
+              <div className="bg-gray-900 p-8 rounded-xl border border-gray-700 text-center transition duration-300 hover:border-indigo-500">
+                <h1 className="text-4xl font-extrabold text-white tracking-wider">
                   Login to read posts
                 </h1>
                 <p className="text-xl text-gray-400 mt-4">

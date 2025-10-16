@@ -33,7 +33,7 @@ function Login() {
       {/* Form container: Dark card with rounded corners and border, replacing the light gray and border */}
       <div className={`mx-auto w-full max-w-lg bg-gray-800 rounded-xl p-10 border border-gray-700 shadow-2xl transition duration-300 hover:border-indigo-600`}>
         <div className="mb-6 flex justify-center">
-          <span className="inline-block w-full max-w-[120px]">
+          <span className="inline-block w-full max-w-[100px] mr-20">
             <Logo width="100%" />
           </span>
         </div>
@@ -71,7 +71,7 @@ function Login() {
             <Input label="Password:" type="password" placeholder="Enter your password!" {...register("password", { required: true })} />
 
             {/* Button style: Prominent CTA color */}
-            <Button type="submit" className='w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-lg font-semibold'>Sign In</Button>
+            <Button type="submit" className='w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-lg font-semibold cursor-pointer'>Sign In</Button>
 
           </div>
 

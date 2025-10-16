@@ -4,7 +4,7 @@ import { Controller } from 'react-hook-form';
 import config from '../conf/config';
 
 export default function RTE({ name, control, label, defaultValue = "" }) {
-  const placeholderText = "Start typing your content here... ✍️";
+  const placeholderText = "Start typing your content here...";
   const initialContent = defaultValue || placeholderText;
   let isPlaceholderSet = !defaultValue;
 

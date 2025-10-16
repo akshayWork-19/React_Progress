@@ -39,8 +39,8 @@ function SignUp() {
       {/* Form container: Dark card with rounded corners and border */}
       <div className={`mx-auto w-full max-w-lg bg-gray-800 rounded-xl p-10 border border-gray-700 shadow-2xl transition duration-300 hover:border-indigo-600`}>
         <div className="mb-6 flex justify-center">
-          <span className="inline-block w-full max-w-[120px]">
-            <Logo width="100px" />
+          <span className="inline-block w-full max-w-[100px] mr-20">
+            <Logo width="80px" />
           </span>
         </div>
         {/* Heading: Light text for contrast, bold */}
@@ -89,7 +89,7 @@ function SignUp() {
               })}
             />
             {/* Button style: Prominent CTA color, large font */}
-            <Button type="submit" className="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-lg font-semibold">
+            <Button type="submit" className="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-lg font-semibold cursor-pointer">
               Create Account
             </Button>
           </div>

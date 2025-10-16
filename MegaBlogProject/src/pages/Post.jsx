@@ -29,6 +29,7 @@ function Post() {
       .then((status) => {
         if (status) {
           appwriteService.deleteFile(post.featuredImage)
+          navigate('/all-posts')
         }
       })
       .catch((error) => console.log("Appwrite Error :: GetPost-EditPost :: error", error.message))
@@ -37,7 +38,8 @@ function Post() {
 
     // Deep dark background for the whole page
     <div className="py-20 min-h-screen bg-gray-900 text-gray-200">
-      <Container>
+      {/* 1. Limiting the Container Width */}
+      <Container className="max-w-4xl">
         {/* Post title */}
         <div className="w-full mb-10 pb-4 border-b border-gray-700">
           <h1 className="text-5xl font-extrabold text-center text-indigo-400 tracking-tight">
@@ -46,12 +48,14 @@ function Post() {
         </div>
 
         {/* Featured Image and Action Buttons Container */}
-        <div className="w-full flex justify-center mb-10 relative border border-gray-800 rounded-xl overflow-hidden p-2 bg-gray-800 shadow-2xl">
+        {/* 2. Limited Image Container Width & Centered It */}
+        <div className="w-full flex justify-center mb-10 relative border max-w-lg mx-auto">
           <img
             src={appwriteService.getFilePreview(post.featuredImage)}
             alt={post.title}
             // Image styles: slightly larger and smoother rounded corners
-            className="rounded-lg w-full max-h-[500px] object-cover transition-transform duration-500 ease-in-out hover:scale-[1.01]"
+            /* 3. Ensuring the Image Scales Properly */
+            className="rounded-xl h-auto max-w-full"
           />
 
           {isAuthor && (
@@ -61,7 +65,7 @@ function Post() {
                 {/* Edit Button: Primary accent color */}
                 <Button
                   bgColor="bg-indigo-600 hover:bg-indigo-700"
-                  className="mr-0 font-medium px-4 py-2 rounded-lg"
+                  className="mr-0 font-medium px-4 py-2 rounded-lg cursor-pointer"
                 >
                   Edit
                 </Button>
@@ -69,7 +73,7 @@ function Post() {
               {/* Delete Button: Warning color */}
               <Button
                 bgColor="bg-red-600 hover:bg-red-700"
-                className="font-medium px-4 py-2 rounded-lg"
+                className="font-medium px-4 py-2 rounded-lg "
                 onClick={deletePost}
               >
                 Delete

@@ -37,9 +37,9 @@ function AllPosts() {
           </div>
         ) : (
           // Empty state blending into the dark background with subtle elevation
-          <div className='flex justify-center items-center h-64 bg-gray-800 rounded-xl border border-gray-700 p-8 transition duration-300 hover:border-indigo-500'>
-            <p className='text-2xl text-yellow-500 font-semibold'>
-              No posts available yet. Be the first to create one! 🚀
+          <div className='flex justify-center items-center h-25 bg-gray-800 rounded-xl border border-gray-700 p-8 transition duration-300 hover:border-indigo-500'>
+            <p className='text-2xl text-White font-semibold'>
+              No posts available yet. Be the first to create one!
             </p>
           </div>
         )}

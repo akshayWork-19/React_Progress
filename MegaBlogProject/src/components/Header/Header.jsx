@@ -36,6 +36,7 @@ function Header() {
       slug: "/add-post",
       active: authStatus,
     },
+
   ]
   return (
     // Applied very dark background (bg-gray-900) and removed aggressive shadow for a clean edge
@@ -44,7 +45,6 @@ function Header() {
         <nav className='flex items-center'>
           <div className='mr-8'>
             <Link to='/'>
-              {/* Logo space is slightly larger */}
               <Logo width='80px' />
             </Link>
           </div>

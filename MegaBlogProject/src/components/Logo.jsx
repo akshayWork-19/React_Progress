@@ -1,13 +1,15 @@
 import React from 'react'
 
-function Logo({ width = "100px" }) {
+function Logo({ width = "180px" }) {
   return (
-    // Applied bold, large text with the accent color (indigo-400) on the dark background.
-    <div
-      className='text-3xl font-extrabold text-indigo-400 tracking-wider uppercase'
-      style={{ width }} // This still allows the width prop to control the div's size
-    >
-      Logo
+    // Uses a flex container to combine two text styles for a modern logo effect
+    <div style={{ width }} className='flex items-end'>
+      <span className='text-3xl **font-light** text-indigo-500 tracking-tight'>
+        Blog
+      </span>
+      <span className='text-2xl **font-black** text-gray-400 tracking-wider ml-1'>
+        Junction
+      </span>
     </div>
   )
 }
