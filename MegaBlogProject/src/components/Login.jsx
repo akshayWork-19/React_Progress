@@ -28,34 +28,38 @@ function Login() {
     }
   }
   return (
-    <div className='flex items-center justify-center w-full'>
-      <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
-        <div className="mb-2 flex justify-center">
-          <span className="inline-block w-full max-w-[100px]">
+    // Outer container: Deep dark background, height adjusted to fill screen
+    <div className='flex items-center justify-center w-full min-h-screen bg-gray-900 py-12'>
+      {/* Form container: Dark card with rounded corners and border, replacing the light gray and border */}
+      <div className={`mx-auto w-full max-w-lg bg-gray-800 rounded-xl p-10 border border-gray-700 shadow-2xl transition duration-300 hover:border-indigo-600`}>
+        <div className="mb-6 flex justify-center">
+          <span className="inline-block w-full max-w-[120px]">
             <Logo width="100%" />
           </span>
         </div>
-        <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
-        <p className="mt-2 text-center text-base text-black/60">
+        {/* Heading: Light text for contrast, bold */}
+        <h2 className="text-center text-3xl font-extrabold leading-tight text-white">Sign in to your account</h2>
+        {/* Paragraph: Muted light text */}
+        <p className="mt-3 text-center text-base text-gray-400">
           Don&apos;t have any account?&nbsp;
           <Link
             to="/signup"
-            className="font-medium text-primary transition-all duration-200 hover:underline"
+            // Link style: Primary accent color (indigo) for contrast
+            className="font-medium text-indigo-400 transition-all duration-200 hover:underline hover:text-indigo-300"
           >
             Sign Up
           </Link>
         </p>
         {
-          error && <p className='text-red-600 mt-8 text-center'>
+          // Error message: Red text on dark background
+          error && <p className='text-red-500 mt-8 text-center font-medium'>
             {error}
           </p>
         }
         <form onSubmit={handleSubmit(login)} className='mt-8'>
-          <div>
-            <h1>here</h1>
-          </div>
-
-          <div className='sp-x-5'>
+          {/* Removed the '<h1>here</h1>' div as it was just a placeholder */}
+          {/* <div className='sp-x-5'> - changed to standard spacing below */}
+          <div className='space-y-5'>
             <Input label="Email:" placeholder="Enter your email!" type="email" {...register("email", {
               required: true,
               validate: {
@@ -66,7 +70,8 @@ function Login() {
 
             <Input label="Password:" type="password" placeholder="Enter your password!" {...register("password", { required: true })} />
 
-            <Button type="submit" className='w-full '>Sign In</Button>
+            {/* Button style: Prominent CTA color */}
+            <Button type="submit" className='w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-lg font-semibold'>Sign In</Button>
 
           </div>
 

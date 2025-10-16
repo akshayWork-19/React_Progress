@@ -28,16 +28,24 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
   return !loading ? (
-    <div className="min-h-screen flex flex-wrap content-between bg-gray-500">
+    // Main container: Deep dark background, uses flex to push the footer to the bottom
+    <div className="min-h-screen flex flex-col bg-gray-900 text-white">
       <div className="w-full block">
         <Header />
-        <main>
-          <Outlet />
-
-        </main>
+      </div>
+      {/* Main content area: uses flex-grow to take up all available space */}
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+      <div className="w-full block">
         <Footer />
       </div>
-    </div >) : (null)
+    </div >) : (
+      // Loading state: shows a centered message on the deep dark background
+      <div className="min-h-screen flex items-center justify-center bg-gray-900">
+        <p className="text-xl text-indigo-400 font-semibold">Loading...</p>
+      </div>
+    )
 }
 
 export default App

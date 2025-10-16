@@ -5,7 +5,6 @@ import { login } from "../store/authSlice";
 import { Input, Button, Logo } from "./index";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-console.log("inside signup componenet");
 
 function SignUp() {
   const dispatch = useDispatch();
@@ -35,26 +34,32 @@ function SignUp() {
 
 
   return (
-    <div className="flex items-center justify-center">
-      <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
-        <div className="mb-2 flex justify-center">
-          <span className="inline-block w-full max-w-[100px]">
+    // Outer container: Deep dark background, height adjusted to fill screen
+    <div className="flex items-center justify-center w-full min-h-screen bg-gray-900 py-12">
+      {/* Form container: Dark card with rounded corners and border */}
+      <div className={`mx-auto w-full max-w-lg bg-gray-800 rounded-xl p-10 border border-gray-700 shadow-2xl transition duration-300 hover:border-indigo-600`}>
+        <div className="mb-6 flex justify-center">
+          <span className="inline-block w-full max-w-[120px]">
             <Logo width="100px" />
           </span>
         </div>
-        <h2 className="text-center text-2xl font-bold leading-tight">Sign up to create account</h2>
-        <p className="mt-2 text-center text-base text-black/60">
+        {/* Heading: Light text for contrast, bold */}
+        <h2 className="text-center text-3xl font-extrabold leading-tight text-white">Sign up to create account</h2>
+        {/* Paragraph: Muted light text */}
+        <p className="mt-3 text-center text-base text-gray-400">
           Already have an account?&nbsp;
           <Link
             to="/login"
-            className="font-medium text-primary transition-all duration-200 hover:underline"
+            // Link style: Primary accent color (indigo) for contrast
+            className="font-medium text-indigo-400 transition-all duration-200 hover:underline hover:text-indigo-300"
           >
             Sign In
           </Link>
         </p>
-        {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+        {/* Error message: Red text on dark background */}
+        {error && <p className="text-red-500 mt-8 text-center font-medium">{error}</p>}
 
-        <form onSubmit={handleSubmit(createUser)}>
+        <form onSubmit={handleSubmit(createUser)} className='mt-8'>
           <div className='space-y-5'>
             <Input
               label="Full Name: "
@@ -83,7 +88,8 @@ function SignUp() {
                 required: true,
               })}
             />
-            <Button type="submit" className="w-full">
+            {/* Button style: Prominent CTA color, large font */}
+            <Button type="submit" className="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 text-lg font-semibold">
               Create Account
             </Button>
           </div>

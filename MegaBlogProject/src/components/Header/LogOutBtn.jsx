@@ -15,7 +15,13 @@ function LogOutBtn() {
       .finally(() => console.log("Logout button working!"));
   }
   return (
-    <button className='inline-block px-6 py-2 duration-200 hover:bg-blue-300 rounded-full' onClick={logOutHandler}>Logout</button>
+    // Updated button to be a distinct, slightly brighter CTA element
+    <button
+      className='px-5 py-3 text-lg font-semibold duration-300 transition-all bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50'
+      onClick={logOutHandler}
+    >
+      Logout
+    </button>
   )
 }
 
